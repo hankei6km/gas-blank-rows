@@ -1,6 +1,6 @@
 {
   "name": "@hankei6km/gas-blank-rows",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Google Apps Script library to delete blank rows from Spread Sheet",
   "author": "hankei6km <hankei6km@gmail.com> (https://github.com/hankei6km)",
   "license": "MIT",
