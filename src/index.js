@@ -11,7 +11,7 @@
 /**
  * スプレッドシートの空行を削除.
  *
- * @param { GoogleAppsScript.Spreadsheet.SheetType } sheet - シート.
+ * @param { SpreadsheetApp.Sheet } sheet - シート.
  * @returns {string}
  */
 function deleteBlankRows(sheet) {
