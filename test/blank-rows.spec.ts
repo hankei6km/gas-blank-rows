@@ -1,8 +1,5 @@
 import { jest } from '@jest/globals'
-import {
-  blankRowsInRangeValue,
-  deleteBlankRowsImpl
-} from '../src/blank-rows.js'
+import { BlankRows } from '../src/blank-rows.js'
 
 describe('deleteBlankRowsImpl()', () => {
   const getSheetMock = (values: any[][]) => ({
@@ -20,7 +17,7 @@ describe('deleteBlankRowsImpl()', () => {
       ['', '', ''],
       ['1', '2', '3']
     ])
-    expect(deleteBlankRowsImpl(sheet as any)).toEqual([5, 3, 2])
+    expect(BlankRows.deleteBlankRows(sheet as any)).toEqual([5, 3, 2])
     expect(sheet.deleteRows.mock.calls).toEqual([
       [5, 1],
       [3, 1],
@@ -34,7 +31,7 @@ describe('deleteBlankRowsImpl()', () => {
       ['', '', ''],
       ['', '', '']
     ])
-    expect(deleteBlankRowsImpl(sheet as any)).toEqual([4, 3, 2, 1])
+    expect(BlankRows.deleteBlankRows(sheet as any)).toEqual([4, 3, 2, 1])
     expect(sheet.deleteRows.mock.calls).toEqual([
       [4, 1],
       [3, 1],
@@ -48,7 +45,7 @@ describe('deleteBlankRowsImpl()', () => {
       ['A', 'B', 'C'],
       ['1', '2', '3']
     ])
-    expect(deleteBlankRowsImpl(sheet as any)).toEqual([])
+    expect(BlankRows.deleteBlankRows(sheet as any)).toEqual([])
     expect(sheet.deleteRows.mock.calls).toEqual([])
   })
 })
