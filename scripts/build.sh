@@ -20,8 +20,10 @@ cat "${SRC_INDEX}" "${OUT_MAIN}" > "${BUILD_DIR}/${BASENAME}.js"
 # Assets に含める LICENSE ファイルをコピー.
 cp LICENSE "${BUILD_DIR}/LICENSE.txt"
 
-# 型定義を index.d.ts へ移動.
-mv "${BUILD_DIR}/src/${BASENAME}.d.ts" "index.d.ts"
+# 型定義から良くない方法で export を外す(モジュールにしないため)
+# index.d.ts へ移動.
+sed -e 's/^export \(declare namespace\)/\1/' -- "${BUILD_DIR}/src/${BASENAME}.d.ts" > "index.d.ts"
+rm "${BUILD_DIR}/src/${BASENAME}.d.ts"
 
 # 作業用ファイルなどを削除.
 npx rimraf "${OUT_MAIN}" "${BUILD_DIR}/src" "${BUILD_DIR}/test"
