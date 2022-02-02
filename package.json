@@ -1,20 +1,19 @@
 {
-  "name": "@hankei6km/my-starter-gas-lib-ts",
-  "version": "0.12.0",
-  "description": "My Starter to make Google Apps Script library by using TypeScript",
+  "name": "@hankei6km/gas-blank-rows",
+  "version": "0.0.0",
+  "description": "Google Apps Script library to delete blank rows from Spread Sheet",
   "author": "hankei6km <hankei6km@gmail.com> (https://github.com/hankei6km)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hankei6km/gas-md2html.git"
+    "url": "git://github.com/hankei6km/gas-blank-rows.git"
   },
   "bugs": {
-    "url": "https://github.com/hankei6km/gas-md2html/issues"
+    "url": "https://github.com/hankei6km/gas-blank-rows/issues"
   },
   "keywords": [
     "gas",
-    "markdown",
-    "html"
+    "spreadsheet"
   ],
   "files": [
     "index.d.ts"
@@ -35,15 +34,7 @@
     "test:build": "npm run clean:test && npm run build && bash scripts/test-build.sh && npm run test",
     "posttest:build": "npm run clean:test"
   },
-  "dependencies": {
-    "hast-util-raw": "^7.2.1",
-    "hast-util-sanitize": "^4.0.0",
-    "hast-util-to-html": "^8.0.3",
-    "mdast-util-from-markdown": "^1.2.0",
-    "mdast-util-gfm": "^2.0.0",
-    "mdast-util-to-hast": "^12.1.0",
-    "micromark-extension-gfm": "^2.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.3",
