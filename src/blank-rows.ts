@@ -1,13 +1,5 @@
+import { blankRowsInRangeValue } from './util.js'
 export namespace BlankRows {
-  function blankRowsInRangeValue(values: any[][]): number[] {
-    return values.reduceRight((rows, cur, idx) => {
-      if (cur.every((v) => v === '')) {
-        rows.push(idx + 1)
-      }
-      return rows
-    }, [])
-  }
-
   /**
    * スプレッドシートの空行を削除.
    * @param sheet - シート.
