@@ -10,10 +10,9 @@
 
 /**
  * スプレッドシートの空行を削除.
- *
  * @param { SpreadsheetApp.Sheet } sheet - シート.
- * @returns {string}
+ * @returns {Array<number>} - 削除した行番号(降順).
  */
 function deleteBlankRows(sheet) {
-  return _entry_point_.deleteBlankRows(sheet)
+  return _entry_point_.BlankRows.deleteBlankRows(sheet)
 }
