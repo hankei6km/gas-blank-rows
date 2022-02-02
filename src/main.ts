@@ -1,1 +1,1 @@
-export { deleteBlankRows } from './blank-rows.js'
+export { deleteBlankRowsImpl as deleteBlankRows } from './blank-rows.js'

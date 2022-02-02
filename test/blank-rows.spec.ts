@@ -1,7 +1,54 @@
-import { deleteBlankRows } from '../src/blank-rows'
+import { jest } from '@jest/globals'
+import {
+  blankRowsInRangeValue,
+  deleteBlankRowsImpl
+} from '../src/blank-rows.js'
 
-describe('deleteBlankRows()', () => {
+describe('deleteBlankRowsImpl()', () => {
+  const getSheetMock = (values: any[][]) => ({
+    getDataRange: () => ({
+      getValues: () => values
+    }),
+    deleteRows: jest.fn()
+  })
   it('should delete blank rows', () => {
-    expect(deleteBlankRows('' as any)).toEqual('')
+    const sheet = getSheetMock([
+      ['a', 'b', 'c'],
+      ['', '', ''],
+      ['', '', ''],
+      ['A', 'B', 'C'],
+      ['', '', ''],
+      ['1', '2', '3']
+    ])
+    expect(deleteBlankRowsImpl(sheet as any)).toEqual([5, 3, 2])
+    expect(sheet.deleteRows.mock.calls).toEqual([
+      [5, 1],
+      [3, 1],
+      [2, 1]
+    ])
+  })
+  it('should delete blank rows(all)', () => {
+    const sheet = getSheetMock([
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', '']
+    ])
+    expect(deleteBlankRowsImpl(sheet as any)).toEqual([4, 3, 2, 1])
+    expect(sheet.deleteRows.mock.calls).toEqual([
+      [4, 1],
+      [3, 1],
+      [2, 1],
+      [1, 1]
+    ])
+  })
+  it('should delete blank rows(not exists)', () => {
+    const sheet = getSheetMock([
+      ['a', 'b', 'c'],
+      ['A', 'B', 'C'],
+      ['1', '2', '3']
+    ])
+    expect(deleteBlankRowsImpl(sheet as any)).toEqual([])
+    expect(sheet.deleteRows.mock.calls).toEqual([])
   })
 })
